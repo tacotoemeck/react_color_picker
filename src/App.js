@@ -6,11 +6,25 @@ import { generatePalette } from './ColorHelpers';
 import './App.css';
 
 class App extends React.Component {
+  findPalette(id) {
+    return seedColors.find((palette) => palette.id === id);
+  }
   render() {
     return (
       <Switch>
         <Route exact path='/' render={() => <h1>pallets</h1>} />
-        <Route exact path='/palette/:id' render={() => <h1>palleasdasdasdts</h1>} />
+        <Route
+          exact
+          path='/palette/:id'
+          render={routeProps => (
+            <Palette
+              palette={generatePalette(
+                this.findPalette(routeProps.match.params.id)
+              )}
+            />
+
+          )}
+        />
       </Switch>
 
       // <div>
