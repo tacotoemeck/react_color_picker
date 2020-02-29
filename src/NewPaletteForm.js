@@ -80,7 +80,6 @@ export default function NewPaletteForm(props) {
   const [currentColor, setColor] = React.useState("teal");
   const [colors, setNewColor] = React.useState([]);
   const [color, newColor] = React.useState("");
-
   const [paletteName, newPaletteName] = React.useState("");
 
   React.useEffect(() => {
@@ -152,6 +151,14 @@ export default function NewPaletteForm(props) {
     };
     props.savePalette(newPalette);
     props.history.push("/");
+  }
+
+  function removeColor(colorName){
+    console.log(colorName)
+    let newColorList = colors.filter(color => color.name !== colorName);
+    console.log(colors)
+    console.log(newColorList)
+    setNewColor([...newColorList])
   }
 
   return (
@@ -252,7 +259,11 @@ export default function NewPaletteForm(props) {
         <div className={classes.drawerHeader} />
 
         {colors.map(color => (
-          <DraggableColorBox color={color.color} name={color.name} />
+          <DraggableColorBox 
+          key={color.name}
+          color={color.color} 
+          name={color.name} 
+          handleClick={() => removeColor(color.name)}/>
         ))}
       </main>
     </div>
