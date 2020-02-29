@@ -10,7 +10,10 @@
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^7.2.1",
     "chroma-js": "^2.1.0",
+<<<<<<< HEAD
     "eslint": "^6.8.0",
+=======
+>>>>>>> 0dadf9a687320e382e99b18f7840d2d977d3aeca
     "rc-slider": "^9.2.1",
     "react": "^16.12.0",
     "react-color": "^2.18.0",
@@ -40,8 +43,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+<<<<<<< HEAD
   },
   "devDependencies": {
     "prettier": "^1.19.1"
+=======
+>>>>>>> 0dadf9a687320e382e99b18f7840d2d977d3aeca
   }
 }
