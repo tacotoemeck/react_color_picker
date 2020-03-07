@@ -83,6 +83,7 @@ const useStyles = makeStyles(theme => ({
 export default function NewPaletteForm(props) {
   const maxColors = 20;
   const classes = useStyles();
+  console.log(classes);
   const [open, setOpen] = React.useState(false);
   const [currentColor, setColor] = React.useState('teal');
   const [colors, setNewColor] = React.useState(

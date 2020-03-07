@@ -13,7 +13,7 @@ import {
   TextValidator,
 } from 'react-material-ui-form-validator';
 
-export default function NewPaletteForm(props, classes) {
+export default function NewPaletteForm(props) {
   const [paletteName, newPaletteName] = React.useState('');
 
   React.useEffect(() => {
@@ -41,8 +41,8 @@ export default function NewPaletteForm(props, classes) {
       <AppBar
         color="default"
         position="fixed"
-        className={clsx(classes.appBar, {
-          [classes.appBarShift]: props.open,
+        className={clsx(props.classes.appBar, {
+          [props.classes.appBarShift]: props.open,
         })}
       >
         <Toolbar>
@@ -52,8 +52,8 @@ export default function NewPaletteForm(props, classes) {
             onClick={props.handleDrawerOpen}
             edge="start"
             className={clsx(
-              classes.menuButton,
-              props.open && classes.hide,
+              props.classes.menuButton,
+              props.open && props.classes.hide,
             )}
           >
             <MenuIcon />
