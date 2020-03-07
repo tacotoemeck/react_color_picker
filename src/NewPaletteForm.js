@@ -2,13 +2,9 @@ import React from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import Button from '@material-ui/core/Button';
 import DraggableColorList from './DraggableColorList';
@@ -17,9 +13,9 @@ import {
   ValidatorForm,
   TextValidator,
 } from 'react-material-ui-form-validator';
-import { ChromePicker } from 'react-color';
 import arrayMove from 'array-move';
 import PaletteFormNav from './PaletteFormNav';
+import ColorPickerForm from './ColorPickerForm';
 
 const drawerWidth = 340;
 
@@ -83,7 +79,6 @@ const useStyles = makeStyles(theme => ({
 export default function NewPaletteForm(props) {
   const maxColors = 20;
   const classes = useStyles();
-  console.log(classes);
   const [open, setOpen] = React.useState(false);
   const [currentColor, setColor] = React.useState('teal');
   const [colors, setNewColor] = React.useState(
@@ -211,38 +206,14 @@ export default function NewPaletteForm(props) {
             Random Color
           </Button>
         </div>
-
-        <ChromePicker
-          color={currentColor}
-          onChangeComplete={updateCurrentColor}
+        <ColorPickerForm
+          currentColor={currentColor}
+          updateCurrentColor={updateCurrentColor}
+          addNewColor={addNewColor}
+          color={color}
+          handleChange={handleChange}
+          isPalettFull={isPalettFull}
         />
-        <ValidatorForm onSubmit={addNewColor}>
-          <TextValidator
-            value={color}
-            onChange={handleChange}
-            validators={[
-              'required',
-              'isColorNameUnique',
-              'isColorUnique',
-            ]}
-            errorMessages={[
-              'Enter color name',
-              'This name is already used',
-              'You have already used this coloe',
-            ]}
-          />
-          <Button
-            variant="contained"
-            type="submit"
-            color="primary"
-            disabled={isPalettFull}
-            style={{
-              backgroundColor: isPalettFull ? 'gray' : currentColor,
-            }}
-          >
-            {isPalettFull ? 'Palette is full' : 'Add Color'}
-          </Button>
-        </ValidatorForm>
       </Drawer>
       <main
         className={clsx(classes.content, {
