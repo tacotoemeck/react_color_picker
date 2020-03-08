@@ -23,26 +23,6 @@ const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
   },
-  appBar: {
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  appBarShift: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  hide: {
-    display: 'none',
-  },
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
@@ -85,28 +65,6 @@ export default function NewPaletteForm(props) {
     props.palettes[0].colors,
   );
   const [color, newColor] = React.useState('');
-
-  React.useEffect(() => {
-    ValidatorForm.addValidationRule('isColorNameUnique', value => {
-      let allColorNames = [];
-      colors.forEach(color => allColorNames.push(color.name));
-      if (allColorNames.includes(value)) {
-        return false;
-      } else {
-        return true;
-      }
-    });
-    ValidatorForm.addValidationRule('isColorUnique', value => {
-      let allColors = [];
-
-      colors.forEach(color => allColors.push(color.color));
-      if (allColors.includes(value)) {
-        return false;
-      } else {
-        return true;
-      }
-    });
-  });
 
   function handleDrawerOpen() {
     setOpen(true);
@@ -169,7 +127,6 @@ export default function NewPaletteForm(props) {
     <div className={classes.root}>
       <PaletteFormNav
         open={open}
-        classes={classes}
         palettes={props.palettes}
         handleSubmit={handleSubmit}
         handleDrawerOpen={handleDrawerOpen}
@@ -211,6 +168,7 @@ export default function NewPaletteForm(props) {
           updateCurrentColor={updateCurrentColor}
           addNewColor={addNewColor}
           color={color}
+          colors={colors}
           handleChange={handleChange}
           isPalettFull={isPalettFull}
         />
