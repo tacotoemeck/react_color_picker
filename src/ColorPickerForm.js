@@ -59,7 +59,7 @@ function ColorPickerForm(props) {
           value={props.color}
           onChange={props.handleChange}
           margin="normal"
-          placeholder="Add Color Name"
+          placeholder="Add Color Namenpm"
           variant="filled"
           className={classes.colorNameInput}
           validators={[
