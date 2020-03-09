@@ -24,6 +24,7 @@ const useStyles = makeStyles(theme => ({
     }),
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
     height: '64px',
   },
   appBarShift: {
@@ -40,11 +41,27 @@ const useStyles = makeStyles(theme => ({
   hide: {
     display: 'none',
   },
-  navBtns: {},
+  navBtns: {
+    marginRight: '1rem',
+  },
+  button: {
+    margin: '0 0.5rem',
+    '& a': {
+      textDecoration: 'none',
+    },
+  },
+  link: {
+    textDecoration: 'none',
+  },
 }));
 
 export default function NewPaletteForm(props) {
   const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
 
   return (
     <div className={classes.root}>
@@ -74,18 +91,31 @@ export default function NewPaletteForm(props) {
           </Typography>
         </Toolbar>
         <div className={classes.navBtns}>
-          <PaletteMetaForm
-            palettes={props.palettes}
-            handleSubmit={props.handleSubmit}
-          />
-
-          <Link exact to="/">
-            <Button variant="contained" color="secondary">
+          <Link exact to="/" className={classes.link}>
+            <Button
+              variant="contained"
+              color="secondary"
+              className={classes.button}
+            >
               Go Back
             </Button>
           </Link>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleClickOpen}
+            className={classes.button}
+          >
+            Save
+          </Button>
         </div>
       </AppBar>
+      {open && (
+        <PaletteMetaForm
+          palettes={props.palettes}
+          handleSubmit={props.handleSubmit}
+        />
+      )}
     </div>
   );
 }
