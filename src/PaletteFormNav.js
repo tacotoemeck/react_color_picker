@@ -63,6 +63,10 @@ export default function NewPaletteForm(props) {
     setOpen(true);
   };
 
+  const hideForm = () => {
+    setOpen(false);
+  }
+
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -114,6 +118,7 @@ export default function NewPaletteForm(props) {
         <PaletteMetaForm
           palettes={props.palettes}
           handleSubmit={props.handleSubmit}
+          hideForm={hideForm}
         />
       )}
     </div>

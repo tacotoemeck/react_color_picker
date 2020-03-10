@@ -10,6 +10,8 @@ import {
   ValidatorForm,
   TextValidator,
 } from 'react-material-ui-form-validator';
+import 'emoji-mart/css/emoji-mart.css';
+import {Picker} from 'emoji-mart';
 
 export default function FormDialog(props) {
   const [paletteName, newPaletteName] = React.useState('');
@@ -52,6 +54,7 @@ export default function FormDialog(props) {
           <DialogContentText>
             Choose a unique palette name...
           </DialogContentText>
+          <Picker />
 
           <TextValidator
             label="Palette Name"
@@ -67,7 +70,7 @@ export default function FormDialog(props) {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={props.hideForm} color="primary">
             Cancel
           </Button>
           <Button variant="contained" color="primary" type="submit">
