@@ -55,7 +55,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function NewPaletteForm(props) {
+export default function PaletteFormNav(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -65,7 +65,7 @@ export default function NewPaletteForm(props) {
 
   const hideForm = () => {
     setOpen(false);
-  }
+  };
 
   return (
     <div className={classes.root}>
