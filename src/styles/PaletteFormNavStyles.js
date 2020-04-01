@@ -32,12 +32,18 @@ const useStyles = makeStyles(theme => ({
     display: 'none',
   },
   navBtns: {
-    marginRight: '1rem',
+    marginRight: '10rem',
+    '& a': {
+      textDecoration: 'none',
+    },
+    '@media (max-width: 576px)': {
+      marginRight: 0,
+    },
   },
   button: {
     margin: '0 0.5rem',
-    '& a': {
-      textDecoration: 'none',
+    '@media (max-width: 576px)': {
+      margin: 0,
     },
   },
   link: {

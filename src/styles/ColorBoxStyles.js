@@ -14,11 +14,12 @@ export default {
     },
     '@media (max-width: 1200px)': {
       width: '25%',
-      height: props => (props.showingFullPalette ? '20%' : '50%'),
+      height: props =>
+        props.showingFullPalette ? '20%' : '33.3333%',
     },
     '@media (max-width: 992px)': {
       width: '50%',
-      height: props => (props.showingFullPalette ? '10%' : '50%'),
+      height: props => (props.showingFullPalette ? '10%' : '20%'),
     },
     '@media (max-width: 576px)': {
       width: '100%',
@@ -118,6 +119,9 @@ export default {
       marginBottom: '0',
       padding: '1rem',
       textTransform: 'uppercase',
+      '@media (max-width: 576px)': {
+        fontSize: '5rem',
+      },
     },
     '& p': {
       fontSize: '2rem',
